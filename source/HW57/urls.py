@@ -21,4 +21,5 @@ from to_do_list import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.TaskListView.as_view(), name='task_list'),
+    path('add/', views.TaskAddView.as_view(), name='task_add'),
 ]

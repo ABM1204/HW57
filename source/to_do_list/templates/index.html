@@ -5,11 +5,12 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{% url 'task_add' %}">Add task</a>
     <div style="display: flex; flex-wrap: wrap;">
         {% for task in tasks %}
         <div class="card" style="width: 18rem; margin: 10px;">
             <div class="card-body">
-                <strong>Name: {{ task.name }}</strong><br>
+                <strong>Summary: {{ task.summary }}</strong><br>
                 <strong>Created at: {{ task.created_at }}</strong><br>
                 <a href="#" style="margin-left: 37%">Details</a>
             </div>
