@@ -1,0 +1,23 @@
+[
+{
+    "model": "to_do_list.type",
+    "pk": 1,
+    "fields": {
+        "name": "Task"
+    }
+},
+{
+    "model": "to_do_list.type",
+    "pk": 2,
+    "fields": {
+        "name": "Bug"
+    }
+},
+{
+    "model": "to_do_list.type",
+    "pk": 3,
+    "fields": {
+        "name": "Enhancement"
+    }
+}
+]

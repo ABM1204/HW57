@@ -1,0 +1,23 @@
+[
+{
+    "model": "to_do_list.status",
+    "pk": 1,
+    "fields": {
+        "name": "New"
+    }
+},
+{
+    "model": "to_do_list.status",
+    "pk": 2,
+    "fields": {
+        "name": "In Progress"
+    }
+},
+{
+    "model": "to_do_list.status",
+    "pk": 3,
+    "fields": {
+        "name": "Done"
+    }
+}
+]
