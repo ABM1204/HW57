@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Task</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
     <h1>Add Task</h1>
     {% include 'partial/task_form.html' with button_text="Add Task" %}
-</body>
-</html>
+{% endblock %}
