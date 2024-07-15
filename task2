@@ -1,0 +1,26 @@
+from django.utils import timezone
+from datetime import timedelta
+from to_do_list.models import Task, Status, Type
+
+
+
+Task1
+now = timezone.now()
+time = now - timedelta(days=30)
+tasks = Task.objects.filter(updated_at__gte=time, status__name='done')
+for task in tasks:
+    print(task)
+
+
+Task2
+statuses = ['in_progress', 'new']
+types = ['Task', 'Bug']
+tasks = Task.objects.filter(status__name__in=statuses, type__name__in=types)
+for task in tasks: print(task)
+
+
+
+Task3
+tasks = Task.objects.filter(status__name__ne='Done').filter(models.Q(summary__icontains='bug') | models.Q(type__name='Bug'))
+for task in tasks:
+    print(task)
