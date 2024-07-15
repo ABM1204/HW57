@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
 
@@ -33,6 +33,47 @@ class TaskAddView(View):
             )
             return redirect('task_list')
         return render(request, 'task_add.html', {'form': form})
+
+
+class TaskDetailView(View):
+
+    def get(self, request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, pk=pk)
+        template_name = "task_detail.html" if task.type else "test_detail.html"
+        return render(request, template_name, {'task': task})
+
+    def task_edit(request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, pk=pk)
+        if request.method == "GET":
+            form = TaskForm(initial={
+                "summary": task.summary,
+                "description": task.description,
+                "type": task.type,
+                "status": task.status,
+            })
+            return render(request, "task_edit.html", context={"form": form, "task": task})
+        else:
+            form = TaskForm(data=request.POST)
+            if form.is_valid():
+                task.summary = form.cleaned_data['summary']
+                task.description = form.cleaned_data['description']
+                task.type = form.cleaned_data['type']
+                task.status = form.cleaned_data['status']
+                task.save()
+                return redirect("task_detail", pk=task.pk)
+            else:
+                return render(request, "task_edit.html", context={"form": form, "task": task})
+
+    def task_delete(request, pk, *args, **kwargs):
+        task = get_object_or_404(Task, pk=pk)
+        if request.method == "GET":
+            return render(request, "task_delete.html", context={"task": task})
+        else:
+            task.delete()
+            return redirect("task_list")
+
+
+
 
 
 

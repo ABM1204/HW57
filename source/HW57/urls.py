@@ -19,7 +19,9 @@ from django.urls import path
 from to_do_list import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.TaskListView.as_view(), name='task_list'),
     path('add/', views.TaskAddView.as_view(), name='task_add'),
+    path('task/<int:pk>/', views.TaskDetailView.as_view(), name='task_detail'),
+    path('task/<int:pk>/edit/', views.TaskDetailView.task_edit, name='task_edit'),
+    path('task/<int:pk>/delete/', views.TaskDetailView.task_delete, name='task_delete'),
 ]

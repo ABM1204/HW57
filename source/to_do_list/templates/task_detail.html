@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Detail</h1>
+        <p>Summary: {{ task.summary }}</p>
+        <p>Description: {{ task.description }}</p>
+        <p>Type: {{ task.type }}</p>
+        <p>Status: {{ task.status }}</p>
+        <a href="{% url 'task_list' %}" class="btn btn-secondary">Back to Task List</a>
+        <a href="{% url 'task_edit' task.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'task_delete' task.pk %}" class="btn btn-danger">Delete</a>
+    </div>
+</body>
+</html>
